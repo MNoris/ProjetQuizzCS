@@ -7,30 +7,36 @@ namespace QuizzCSharp
     {
         static void Main(string[] args)
         {
-            //Partie partie = new Partie();
-            //Joueur joueur = Joueur.CréerJoueur();
+            //Créé une nouvelle partie
+            Partie partie = new Partie();
+            //Créé le joueur pour la session
+            Joueur joueur = Joueur.CréerJoueur();
 
-            //Console.Clear();
+            Console.Clear();
 
-            //partie.InitialiserPartie();
-            //partie.PoserQuestions();
-            //partie.AfficherRésultat();
+            //Lance la partie, puis pose les questions, avant d'afficher le résultat du test
+            partie.InitialiserPartie();
+            partie.PoserQuestions();
+            partie.AfficherRésultat();
 
-            //Résultats.CompléterFichier(joueur, partie.Score, partie.Erreurs);
+            //Complète le fichier avec les résultats du joueur
+            Résultat.CompléterFichier(joueur, partie.Score, partie.Erreurs);
 
-            //Console.ReadKey();
+            Console.Clear();
 
-            //Console.WriteLine("Voulez vous voir les statistiques du jeu ? (o)");
-            //if (Console.ReadKey().KeyChar == 'o')
-            //{
-                Statistiques.Afficher();
-            //}
+            //Propose à l'utilisateur de montrer les statistiques du jeu
+            Console.WriteLine("Voulez vous voir les statistiques du jeu ? (o)");
+            if (Console.ReadKey().KeyChar == 'o')
+            {
 
-            //Console.WriteLine("Appuyez sur Q pour fermer l'application.");
-            //Console.ReadKey();
+            }
 
-
-            Console.ReadKey();
+            Console.WriteLine("Appuyez sur Q pour fermer l'application.");
+            while (Console.ReadKey().KeyChar != 'q')
+            {
+                Console.Clear();
+                Console.WriteLine("Appuyez sur Q pour fermer l'application.");
+            }
         }
     }
 }

@@ -7,16 +7,25 @@ namespace QuizzCSharp
 {
     class DAL
     {
-        public const string Path = "..\\..\\..\\DonnéesMétéoParis.txt";
+        /// <summary>
+        /// Constante représentant le chemin du fichier dans lequel les questions sont stockées
+        /// </summary>
+        public const string PATH = "..\\..\\..\\QCM.txt";
 
+        /// <summary>
+        /// Parcours le fichier correspondant au path et créé les questions et réponses
+        /// </summary>
+        /// <returns>Retourne le liste de questions créées</returns>
         static public List<Question> GetQuestions()
         {
-            string[] file = File.ReadAllLines("..\\..\\..\\QCM.txt", Encoding.UTF8);
+            string[] file = File.ReadAllLines(PATH, Encoding.UTF8);
             var questions = new List<Question>();
 
             Question question = new Question("");
             Réponse réponse;
 
+            //Selon différents critères, pour chaque ligne du fichier, créé une question,
+            //une réponse, ou ajoute les réponses dans la question.
             foreach (var item in file)
             {
                 if (item.ToLower().Contains("question"))
@@ -42,10 +51,6 @@ namespace QuizzCSharp
                 {
                     questions.Add(question);
                 }
-                //else
-                //{
-                //    throw new FormatException($"Le format de la ligne \"{item}\" n'est pas pris en compte.");
-                //}
             }
 
             return questions;
