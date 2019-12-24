@@ -28,9 +28,11 @@ namespace QuizzCSharp
             Console.WriteLine("Voulez vous voir les statistiques du jeu ? (o)");
             if (Console.ReadKey().KeyChar == 'o')
             {
-
+                Console.Clear();
+                Statistiques.Afficher();
             }
 
+            //Ferme l'application quand l'utilisateur appuie sur la touche Q
             Console.WriteLine("Appuyez sur Q pour fermer l'application.");
             while (Console.ReadKey().KeyChar != 'q')
             {
